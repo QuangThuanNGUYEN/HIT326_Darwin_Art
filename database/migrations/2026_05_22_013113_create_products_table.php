@@ -9,13 +9,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('ProductNo');
-            $table->text('Description');
-            $table->decimal('Price', 10, 2);
-            $table->string('Category', 100)->nullable();
-            $table->string('Colour', 50)->nullable();
-            $table->string('Size', 50)->nullable();
-            $table->boolean('Available')->default(true);
+            $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->decimal('price', 10, 2);
+            $table->string('category', 100)->nullable();
+            $table->string('colour', 50)->nullable();
+            $table->string('size', 50)->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('available')->default(true);
             $table->timestamps();
         });
     }
