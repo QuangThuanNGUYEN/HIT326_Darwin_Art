@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('products.index');
+        $products = Product::available()->get();
+        return view('products.index', compact('products'));
     }
 
     public function show($id)
     {
-        return view('products.show');
+        $product = Product::findOrFail($id);
+        return view('products.show', compact('product'));
     }
 }
