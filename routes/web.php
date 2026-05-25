@@ -32,3 +32,6 @@ Route::get('/checkout',
 
 Route::post('/order/submit',
     [OrderController::class, 'submit']);
+
+Route::get('/order/confirmation/{purchaseNo}', 
+    [OrderController::class, 'confirmation'])->name('order.confirmation');

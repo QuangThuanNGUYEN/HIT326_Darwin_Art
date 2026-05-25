@@ -22,7 +22,7 @@ class PurchaseItem extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'ProductNo', 'ProductNo');
+        return $this->belongsTo(Product::class, 'ProductNo', 'id');
     }
 
     public function getSubtotalAttribute()
