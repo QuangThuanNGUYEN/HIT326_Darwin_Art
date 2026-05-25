@@ -2,6 +2,17 @@
 
 @section('content')
 
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
+
+    <script src="{{ asset('js/bootstrap.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+</head>
+
 <h1>Your Cart</h1>
 
 @if(session('success'))
