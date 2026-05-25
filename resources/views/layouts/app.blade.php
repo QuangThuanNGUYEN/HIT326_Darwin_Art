@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Darwin Art</title>
 
@@ -11,19 +16,26 @@
 
 <body>
 
-<nav>
+<nav class="navbar">
 
-    <a href="/">Home</a>
+    <h2>Darwin Art</h2>
 
-    <a href="/cart">Cart</a>
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+        <a href="/cart">Cart</a>
+
+    </div>
 
 </nav>
 
-<div class="content">
+<div class="container">
 
     @yield('content')
 
 </div>
+
+<script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>
