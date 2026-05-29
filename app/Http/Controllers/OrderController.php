@@ -8,6 +8,8 @@ use App\Models\Purchase;
 use App\Models\PurchaseItem;
 use App\Models\Product;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmationBuyer;
+use App\Mail\OrderConfirmationStore;
 
 class OrderController extends Controller
 {
@@ -66,10 +68,21 @@ class OrderController extends Controller
         // 6 — Clear the cart
         session()->forget('cart');
 
-        // 7 — Redirect to confirmation page
-        return redirect('/order/confirmation/' . $purchase->PurchaseNo)
-            ->with('success', 'Your order has been placed successfully!');
-    }
+       // 8 — Send email to buyer
+        Mail::to($customer->CustEmail)
+            ->send(new OrderConfirmationBuyer(
+                $purchase->load('purchaseItems.product', 'customer')
+            ));
+
+        // 9 — Send email to store handler
+        Mail::to('thuanquangnguyen2003@gmail.com')
+            ->send(new OrderConfirmationStore(
+                $purchase->load('purchaseItems.product', 'customer')
+            ));
+                // 7 — Redirect to confirmation page
+                return redirect('/order/confirmation/' . $purchase->PurchaseNo)
+                    ->with('success', 'Your order has been placed successfully!');
+            }
 
     public function confirmation($purchaseNo)
     {
