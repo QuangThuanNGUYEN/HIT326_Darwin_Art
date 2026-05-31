@@ -7,24 +7,24 @@
 
     <title>{{ config('app.name', 'Darwin Art') }}</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-        <!-- Page Content -->
-        <main class="container mx-auto py-6 px-4">
+       <main class="container mx-auto py-6 px-4">
             @yield('content')
         </main>
+    </div> <footer>
+        <p>&copy; {{ date('Y') }} Darwin Art Gallery. All Rights Reserved.</p>
+        <p>Built for Database Driven Web Applications</p>
+    </footer>
     </div>
 </body>
 </html>
