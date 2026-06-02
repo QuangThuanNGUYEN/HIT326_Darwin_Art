@@ -5,7 +5,10 @@
 <div class="container">
 
     <h1>Admin Panel</h1>
-
+    <form method="POST" action="/admin/logout" style="display:inline;">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
     @if(session('success'))
         <p style="color: green;">{{ session('success') }}</p>
     @endif

@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminAuthController;
 
 // Home & Products
 Route::get('/', [ProductController::class, 'index']);
@@ -42,8 +43,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Admin routes
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+// Admin auth routes (no middleware)
+Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+// Admin protected routes (admin middleware)
+Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/products/create', [AdminController::class, 'createProduct'])->name('admin.products.create');
     Route::post('/products', [AdminController::class, 'storeProduct'])->name('admin.products.store');
