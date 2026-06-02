@@ -35,7 +35,7 @@ class AdminController extends Controller
             'category'    => 'nullable|string|max:100',
             'colour'      => 'nullable|string|max:50',
             'size'        => 'nullable|string|max:50',
-            'available'   => 'nullable|boolean',
+            'available'   => 'nullable',
         ]);
 
         Product::create([
@@ -45,7 +45,7 @@ class AdminController extends Controller
             'category'    => $request->category,
             'colour'      => $request->colour,
             'size'        => $request->size,
-            'available'   => $request->has('available') ? true : false,
+            'available'   => $request->input('available') === 'on' ? true : false,
         ]);
 
         return redirect('/admin')
@@ -69,7 +69,7 @@ class AdminController extends Controller
             'category'    => 'nullable|string|max:100',
             'colour'      => 'nullable|string|max:50',
             'size'        => 'nullable|string|max:50',
-            'available'   => 'nullable|boolean',
+            'available'   => 'nullable',
         ]);
 
         $product = Product::findOrFail($id);
@@ -80,7 +80,8 @@ class AdminController extends Controller
             'category'    => $request->category,
             'colour'      => $request->colour,
             'size'        => $request->size,
-            'available'   => $request->has('available') ? true : false,
+            'available'   => $request->input('available') === 'on' ? true : false,
+
         ]);
 
         return redirect('/admin')
