@@ -15,6 +15,9 @@
                     <x-nav-link href="/cart" :active="request()->is('cart')">
                         {{ __('Cart') }}
                     </x-nav-link>
+                    <x-nav-link href="/testimonials" :active="request()->is('testimonials')">
+                        {{ __('Testimonials') }}
+                    </x-nav-link>
                 </div>
             </div>
 
