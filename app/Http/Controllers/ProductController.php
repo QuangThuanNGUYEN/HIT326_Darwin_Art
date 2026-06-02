@@ -10,9 +10,10 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::available()->get();
-        return view('products.index', compact('products'));
+        $latestNews = \App\Models\NewsPost::getLatest();
+        return view('products.index', compact('products', 'latestNews'));
     }
-
+    
     public function show($id)
     {
         $product = Product::findOrFail($id);
