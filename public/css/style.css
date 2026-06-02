@@ -12,75 +12,52 @@ body{
 
 /* NAVBAR */
 
-nav {
-    background-color: #222 !important;
-    padding: 15px 40px !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important; /* Brand left, all links right */
-    align-items: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
+/* NAVBAR */
+
+.navbar {
+    background: #222;
+    padding: 15px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav > div, 
-nav > div > div {
-    display: contents !important; /* Disables parent containers so child elements align globally */
+.logo {
+    color: #f4b400;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-nav div.shrink-0 {
-    display: block !important;
-    order: 1 !important; 
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 
-nav a.font-bold {
-    color: #f4b400 !important;
-    font-size: 22px !important;
-    text-decoration: none !important;
+.navbar-right a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
 }
 
-nav div.hidden.space-x-8,
-nav div.hidden.sm\:flex.sm\:items-center.sm\:ms-6 {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 20px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    order: 2 !important; /* Force to right side group */
+.navbar-right a:hover {
+    color: #f4b400;
 }
 
-
-nav div.hidden.sm\:flex.sm\:items-center.sm\:ms-6 {
-    order: 3 !important;
-    margin-left: 20px !important;
+.logout-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-
-nav a {
-    display: inline-block !important;
-    color: white !important;
-    text-decoration: none !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 500 !important;
-    white-space: nowrap !important;
-    transition: color 0.2s ease;
+.logout-btn:hover {
+    color: #f4b400;
 }
 
-nav a:hover {
-    color: #f4b400 !important;
-}
-
-nav .-me-2.flex,
-nav .hidden.sm\:hidden {
-    display: none !important;
-    visibility: hidden !important;
-    width: 0 !important;
-    height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
 /* CONTAINER */
 
 .container{

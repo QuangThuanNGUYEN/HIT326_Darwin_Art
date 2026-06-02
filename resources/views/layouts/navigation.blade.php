@@ -76,6 +76,9 @@
             <x-responsive-nav-link href="/cart" :active="request()->is('cart')">
                 {{ __('Cart') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="/testimonials" :active="request()->is('testimonials')">
+                {{ __('Testimonials') }}
+            </x-responsive-nav-link>
         </div>
 
         @auth
