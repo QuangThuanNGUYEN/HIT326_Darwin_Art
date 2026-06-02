@@ -11,6 +11,7 @@
         <small>Posted: {{ $latestNews->created_at->format('d M Y') }}</small>
     </div>
     @endif
+    <a href="/testimonials">Read Customer Testimonials</a>
     <div class="product-grid">
 
         @foreach($products as $product)
