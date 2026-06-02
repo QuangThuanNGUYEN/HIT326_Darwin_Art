@@ -4,7 +4,13 @@
 
 <div class="container">
     <h1>Art Collection</h1>
-
+    @if($latestNews)
+    <div class="news-banner">
+        <h3>Latest News</h3>
+        <p>{{ $latestNews->Content }}</p>
+        <small>Posted: {{ $latestNews->created_at->format('d M Y') }}</small>
+    </div>
+    @endif
     <div class="product-grid">
 
         @foreach($products as $product)
