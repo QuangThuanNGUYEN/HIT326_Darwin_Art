@@ -18,7 +18,11 @@
 
         <div class="product-card">
 
-            <img src="{{ asset('storage/' . $product->image) }}" alt="">
+            @if($product->image)
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+            @else
+                <img src="{{ asset('images/no-image.png') }}" alt="No image available">
+            @endif
 
             <h3>{{ $product->name }}</h3>
 

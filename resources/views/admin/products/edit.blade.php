@@ -14,7 +14,7 @@
         </ul>
     @endif
 
-    <form method="POST" action="/admin/products/{{ $product->id }}">
+    <form method="POST" action="/admin/products/{{ $product->id }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -35,6 +35,16 @@
 
         <label>Size</label><br>
         <input type="text" name="size" value="{{ old('size', $product->size) }}"><br><br>
+
+        <label>Current Image</label><br>
+        @if($product->image)
+            <img src="{{ asset('storage/' . $product->image) }}" style="width:150px; margin-bottom:10px;"><br>
+        @else
+            <p>No image uploaded</p>
+        @endif
+
+        <label>Upload New Image (leave empty to keep current)</label><br>
+        <input type="file" name="image" accept="image/*"><br><br>
 
         <label>
             <input type="checkbox" name="available" {{ $product->available ? 'checked' : '' }}>

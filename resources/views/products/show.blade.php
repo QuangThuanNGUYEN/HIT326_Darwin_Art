@@ -4,7 +4,11 @@
 
 <div class="product-detail">
 
-    <img src="{{ asset('storage/' . $product->image) }}">
+    @if($product->image)
+        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+    @else
+        <img src="{{ asset('images/no-image.png') }}" alt="No image available">
+    @endif
 
     <div>
 
