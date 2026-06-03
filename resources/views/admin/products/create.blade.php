@@ -41,10 +41,6 @@
             <input type="checkbox" name="available" checked>
             Available for sale
         </label><br><br>
-        <label>
-            <input type="checkbox" name="available" checked>
-            Available for sale
-        </label><br><br>
 
         <button type="submit">Add Product</button>
         <a href="/admin">Cancel</a>

@@ -68,21 +68,20 @@ class OrderController extends Controller
         // 6 — Clear the cart
         session()->forget('cart');
 
-       // 8 — Send email to buyer
+        // 7 — Send email to buyer
         Mail::to($customer->CustEmail)
             ->send(new OrderConfirmationBuyer(
                 $purchase->load('purchaseItems.product', 'customer')
             ));
 
-        // 9 — Send email to store handler
-        Mail::to('thuanquangnguyen2003@gmail.com')
-            ->send(new OrderConfirmationStore(
-                $purchase->load('purchaseItems.product', 'customer')
-            ));
-                // 7 — Redirect to confirmation page
-                return redirect('/order/confirmation/' . $purchase->PurchaseNo)
-                    ->with('success', 'Your order has been placed successfully!');
-            }
+        // Note: Store handler email (OrderConfirmationStore) is implemented
+        // but disabled due to Mailtrap free plan rate limiting.
+        // Both Mailable classes exist in app/Mail/ directory.
+
+        // 9 — Redirect to confirmation page
+        return redirect('/order/confirmation/' . $purchase->PurchaseNo)
+            ->with('success', 'Your order has been placed successfully!');
+    }
 
     public function confirmation($purchaseNo)
     {
