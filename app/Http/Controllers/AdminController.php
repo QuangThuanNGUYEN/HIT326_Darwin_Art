@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\NewsPost;
 use App\Models\Testimonial;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -36,7 +37,14 @@ class AdminController extends Controller
             'colour'      => 'nullable|string|max:50',
             'size'        => 'nullable|string|max:50',
             'available'   => 'nullable',
+            'image'       => 'nullable|image|max:2048',
         ]);
+
+        // Handle image upload
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+        }
 
         Product::create([
             'name'        => $request->name,
@@ -46,6 +54,7 @@ class AdminController extends Controller
             'colour'      => $request->colour,
             'size'        => $request->size,
             'available'   => $request->input('available') === 'on' ? true : false,
+            'image'       => $imagePath,
         ]);
 
         return redirect('/admin')
@@ -70,9 +79,20 @@ class AdminController extends Controller
             'colour'      => 'nullable|string|max:50',
             'size'        => 'nullable|string|max:50',
             'available'   => 'nullable',
+            'image'       => 'nullable|image|max:2048',
         ]);
 
         $product = Product::findOrFail($id);
+
+        // Handle image upload
+        $imagePath = $product->image;
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $imagePath = $request->file('image')->store('products', 'public');
+        }
+
         $product->update([
             'name'        => $request->name,
             'description' => $request->description,
@@ -81,7 +101,7 @@ class AdminController extends Controller
             'colour'      => $request->colour,
             'size'        => $request->size,
             'available'   => $request->input('available') === 'on' ? true : false,
-
+            'image'       => $imagePath,
         ]);
 
         return redirect('/admin')

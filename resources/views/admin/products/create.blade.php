@@ -14,7 +14,7 @@
         </ul>
     @endif
 
-    <form method="POST" action="/admin/products">
+    <form method="POST" action="/admin/products" enctype="multipart/form-data">
         @csrf
 
         <label>Name</label><br>
@@ -34,7 +34,13 @@
 
         <label>Size</label><br>
         <input type="text" name="size" value="{{ old('size') }}"><br><br>
+        <label>Product Image</label><br>
+        <input type="file" name="image" accept="image/*"><br><br>
 
+        <label>
+            <input type="checkbox" name="available" checked>
+            Available for sale
+        </label><br><br>
         <label>
             <input type="checkbox" name="available" checked>
             Available for sale
