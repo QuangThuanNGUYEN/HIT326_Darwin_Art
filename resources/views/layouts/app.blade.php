@@ -18,13 +18,14 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-       <main class="container mx-auto py-6 px-4">
+        <main class="container mx-auto py-6 px-4">
             @yield('content')
         </main>
-    </div> <footer>
+    </div>
+
+    <footer>
         <p>&copy; {{ date('Y') }} Darwin Art Gallery. All Rights Reserved.</p>
         <p>Built for Database Driven Web Applications</p>
     </footer>
-    </div>
 </body>
 </html>
